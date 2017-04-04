@@ -20,10 +20,10 @@ $EM_CONF[$_EXTKEY] = array(
     'clearCacheOnLoad' => 1,
     'author' => 'tt_address Development Team',
     'author_email' => 'friendsof@typo3.org',
-    'version' => '3.2.1',
+    'version' => '3.5.0',
     'constraints' => array(
         'depends' => array(
-            'typo3' => '6.2.2-8.9.99'
+            'typo3' => '7.6.0-8.9.99'
         ),
         'conflicts' => array(
         ),
