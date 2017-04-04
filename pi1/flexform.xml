@@ -185,7 +185,7 @@
 									<numIndex index="0" type="array">
 										<numIndex index="0">LLL:EXT:tt_address/pi1/locallang_ff.xml:pi1_flexform.templateFile.I.0</numIndex>
 										<numIndex index="1">default</numIndex>
-										<numIndex index="2">EXT:tt_address/res/default_hcard.gif</numIndex>
+										<numIndex index="2">EXT:tt_address/Resources/Public/Icons/default_hcard.gif</numIndex>
 									</numIndex>
 								</items>
 								<itemsProcFunc>TYPO3\TtAddress\Hooks\Tca\AddFilesToSelector->main</itemsProcFunc>
