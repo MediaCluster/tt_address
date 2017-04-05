@@ -28,7 +28,7 @@ return array(
         'dividers2tabs' => 1,
     ),
     'interface' => array(
-        'showRecordFieldList' => 'first_name,middle_name,last_name,address,building,room,city,zip,region,country,phone,fax,email,www,title,company,image'
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden,first_name,middle_name,last_name,address,building,room,city,zip,region,country,phone,fax,email,www,title,company,image'
     ),
     'columns' => array(
         'pid' => array(
@@ -75,7 +75,7 @@ return array(
                 )
             )
         ),
-        'l18n_parent' => array(
+        'l10n_parent' => array(
             'displayCond' => 'FIELD:sys_language_uid:>:0',
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
@@ -88,12 +88,14 @@ return array(
                 'foreign_table_where' => 'AND tt_address.pid=###CURRENT_PID### AND tt_address.sys_language_uid IN (-1,0)',
             )
         ),
-        'l18n_diffsource' => array(
+        'l10n_diffsource' => array(
             'config' => array(
                 'type' => 'passthrough'
             )
         ),
         'gender' => array(
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'label' => 'LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address.gender',
             'config' => array(
                 'type' => 'radio',
@@ -155,6 +157,8 @@ return array(
             )
         ),
         'birthday' => array(
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'exclude' => 1,
             'label' => 'LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address.birthday',
             'config' => array(
@@ -200,6 +204,8 @@ return array(
             )
         ),
         'fax' => array(
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.fax',
             'config' => array(
@@ -210,6 +216,8 @@ return array(
             )
         ),
         'mobile' => array(
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'exclude' => 1,
             'label' => 'LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address.mobile',
             'config' => array(
@@ -227,7 +235,7 @@ return array(
                 'eval' => 'trim',
                 'size' => '20',
                 'max' => '255',
-		'softref' => 'typolink,url',
+                'softref' => 'typolink,url',
                 'wizards' => array(
                     '_PADDING' => 2,
                     'link' => array(
@@ -250,16 +258,20 @@ return array(
             )
         ),
         'email' => array(
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.email',
             'config' => array(
                 'type' => 'input',
                 'size' => '20',
                 'eval' => 'trim',
                 'max' => '255',
-		'softref' => 'email'
+                'softref' => 'email'
             )
         ),
         'skype' => array(
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'exclude' => 1,
             'label' => 'LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address.skype',
             'config' => array(
@@ -271,6 +283,8 @@ return array(
             )
         ),
         'twitter' => array(
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'exclude' => 1,
             'label' => 'LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address.twitter',
             'config' => array(
@@ -282,6 +296,8 @@ return array(
             )
         ),
         'facebook' => array(
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'exclude' => 1,
             'label' => 'LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address.facebook',
             'config' => array(
@@ -293,6 +309,8 @@ return array(
             )
         ),
         'linkedin' => array(
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'exclude' => 1,
             'label' => 'LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address.linkedin',
             'config' => array(
@@ -333,6 +351,8 @@ return array(
             )
         ),
         'zip' => array(
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.zip',
             'config' => array(
                 'type' => 'input',
@@ -375,33 +395,33 @@ return array(
                     'foreign_types' => array(
                         '0' => array(
                             'showitem' => '
-								--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-								--palette--;;filePalette'
+                              --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                              --palette--;;filePalette'
                         ),
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => array(
                             'showitem' => '
-								--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-								--palette--;;filePalette'
+                              --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                              --palette--;;filePalette'
                         ),
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => array(
                             'showitem' => '
-								--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-								--palette--;;filePalette'
+                              --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                              --palette--;;filePalette'
                         ),
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => array(
                             'showitem' => '
-								--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-								--palette--;;filePalette'
+                              --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                              --palette--;;filePalette'
                         ),
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => array(
                             'showitem' => '
-								--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-								--palette--;;filePalette'
+                              --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                              --palette--;;filePalette'
                         ),
                         \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => array(
                             'showitem' => '
-								--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-								--palette--;;filePalette'
+                              --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                              --palette--;;filePalette'
                         )
                     )
                 ),
@@ -415,46 +435,51 @@ return array(
                 'type' => 'text',
                 'rows' => 5,
                 'cols' => 48,
-		'softref' => 'typolink_tag,url',
+                'softref' => 'typolink_tag,url',
             )
         ),
         'categories' => array(
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'exclude' => 1,
             'label' => 'LLL:EXT:lang/locallang_tca.xlf:sys_category.categories',
             'config' => \TYPO3\CMS\Core\Category\CategoryRegistry::getTcaFieldConfiguration('tt_address')
         ),
         'latitude' => array(
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'exclude' => 1,
             'label' => 'LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address.latitude',
             'config' => array(
                 'type' => 'input',
-		'eval' => 'nospace,null',
-		'default' => NULL
+                'eval' => 'nospace,null',
+                'default' => NULL
             )
         ),
         'longitude' => array(
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'exclude' => 1,
             'label' => 'LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address.longitude',
             'config' => array(
                 'type' => 'input',
-		'eval' => 'nospace,null',
-		'default' => NULL
+                'eval' => 'nospace,null',
+                'default' => NULL
             )
         ),
     ),
     'types' => array(
         '0' => array('showitem' =>
-            'hidden,
-			--palette--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_palette.name;name,
-			image, description,
-			--div--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_tab.contact,
-				--palette--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_palette.address;address,
-				--palette--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_palette.building;building,
-				--palette--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_palette.organization;organization,
-				--palette--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_palette.contact;contact,
-				--palette--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_palette.social;social,
-			--div--;LLL:EXT:lang/locallang_tca.xlf:sys_category.tabs.category, categories
-			')
+            'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1,
+              --palette--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_palette.name;name,image, description,
+             --div--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_tab.contact,
+             --palette--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_palette.address;address,
+             --palette--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_palette.building;building,
+             --palette--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_palette.organization;organization,
+             --palette--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_palette.contact;contact,
+             --palette--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_palette.social;social,
+             --div--;LLL:EXT:lang/locallang_tca.xlf:sys_category.tabs.category, categories
+       ')
     ),
     'palettes' => array(
         'name' => array(
