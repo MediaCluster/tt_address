@@ -10,6 +10,7 @@ return array(
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
+        'sortby' => 'sorting',
         'default_sortby' => 'ORDER BY last_name, first_name, middle_name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -67,6 +68,7 @@ return array(
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
             'config' => array(
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'foreign_table' => 'sys_language',
                 'foreign_table_where' => 'ORDER BY sys_language.title',
                 'items' => array(
@@ -81,6 +83,7 @@ return array(
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
             'config' => array(
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'items' => array(
                     array('', 0),
                 ),
@@ -198,7 +201,7 @@ return array(
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.phone',
             'config' => array(
                 'type' => 'input',
-                'eval' => 'trim',
+                'eval' => 'TYPO3\\TtAddress\\Evaluation\\TelephoneEvaluation',
                 'size' => '20',
                 'max' => '30'
             )
@@ -211,7 +214,7 @@ return array(
             'config' => array(
                 'type' => 'input',
                 'size' => '20',
-                'eval' => 'trim',
+                'eval' => 'TYPO3\\TtAddress\\Evaluation\\TelephoneEvaluation',
                 'max' => '30'
             )
         ),
@@ -222,7 +225,7 @@ return array(
             'label' => 'LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address.mobile',
             'config' => array(
                 'type' => 'input',
-                'eval' => 'trim',
+                'eval' => 'TYPO3\\TtAddress\\Evaluation\\TelephoneEvaluation',
                 'size' => '20',
                 'max' => '30'
             )
@@ -264,7 +267,7 @@ return array(
             'config' => array(
                 'type' => 'input',
                 'size' => '20',
-                'eval' => 'trim',
+                'eval' => 'email',
                 'max' => '255',
                 'softref' => 'email'
             )
@@ -452,7 +455,7 @@ return array(
             'label' => 'LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address.latitude',
             'config' => array(
                 'type' => 'input',
-                'eval' => 'nospace,null',
+                'eval' => 'null,TYPO3\\TtAddress\\Evaluation\\LatitudeEvaluation',
                 'default' => NULL
             )
         ),
@@ -463,14 +466,14 @@ return array(
             'label' => 'LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address.longitude',
             'config' => array(
                 'type' => 'input',
-                'eval' => 'nospace,null',
+                'eval' => 'null,TYPO3\\TtAddress\\Evaluation\\LongitudeEvaluation',
                 'default' => NULL
             )
         ),
     ),
     'types' => array(
         '0' => array('showitem' =>
-            'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1,
+            'sys_language_uid, l10n_parent, l10n_diffsource, hidden,
               --palette--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_palette.name;name,image, description,
              --div--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_tab.contact,
              --palette--;LLL:EXT:tt_address/Resources/Private/Language/locallang_tca.xlf:tt_address_palette.address;address,
