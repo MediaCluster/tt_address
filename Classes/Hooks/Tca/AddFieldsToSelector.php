@@ -31,7 +31,7 @@ class AddFieldsToSelector
     public function main(&$params, &$pObj)
     {
         // TODO consolidate with list in pi1
-        $coreSortFields = 'gender, first_name, middle_name, last_name, title, company, '
+        $coreSortFields = 'sorting, gender, first_name, middle_name, last_name, title, company, '
             . 'address, building, room, birthday, zip, city, region, country, email, www, phone, mobile, '
             . 'fax';
 
@@ -47,12 +47,14 @@ class AddFieldsToSelector
                 'label' => $label
             );
         }
+        // add label for field "sorting"
+        $selectOptions[0]['label'] = $GLOBALS['LANG']->sL('LLL:EXT:tt_address/Resources/Private/Language/ff/locallang_ff.xml:pi1_flexform.sortBy.sorting');
 
         // add sorting by order of single selection
         $selectOptions[] = array(
-            'field' => 'singleSelection',
-            'label' => $GLOBALS['LANG']->sL('LLL:EXT:tt_address/pi1/locallang_ff.xml:pi1_flexform.sortBy.singleSelection')
-        );
+          'field' => 'singleSelection',
+          'label' => $GLOBALS['LANG']->sL('LLL:EXT:tt_address/Resources/Private/Language/ff/locallang_ff.xml:pi1_flexform.sortBy.singleSelection')
+        );         
 
         // sort by labels
         $labels = array();

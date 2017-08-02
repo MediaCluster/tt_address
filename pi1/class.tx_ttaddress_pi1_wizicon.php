@@ -29,28 +29,14 @@ class tx_ttaddress_pi1_wizicon
      */
     public function proc($wizardItems)
     {
-        $LL = $this->includeLocalLang();
-
         $wizardItems['plugins_tx_ttaddress_pi1'] = array(
-            'icon'        => ExtensionManagementUtility::extRelPath('tt_address') . 'pi1/ce_wiz.gif',
-            'title'       => $GLOBALS['LANG']->getLLL('pi1_title', $LL),
-            'description' => $GLOBALS['LANG']->getLLL('pi1_plus_wiz_description', $LL),
+            'icon'        => ExtensionManagementUtility::extRelPath('tt_address') . 'Resources/Public/Icons/ce_wiz.gif',
+            'title'       => $GLOBALS['LANG']->sL('LLL:EXT:tt_address/Resources/Private/Language/db/locallang.xlf:pi1_title'),
+            'description' => $GLOBALS['LANG']->sL('LLL:EXT:tt_address/Resources/Private/Language/db/locallang.xlf:pi1_plus_wiz_description'),
             'params'      => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=tt_address_pi1'
         );
 
         return $wizardItems;
     }
 
-    /**
-     * Includes the locallang file for the 'tt_address' extension
-     *
-     * @return array The LOCAL_LANG array
-     */
-    protected function includeLocalLang()
-    {
-        $llFile = ExtensionManagementUtility::extPath('tt_address') . 'locallang.xml';
-
-        $localLanguageParser = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Localization\\Parser\\LocallangXmlParser');
-        return $localLanguageParser->getParsedData($llFile, $GLOBALS['LANG']->lang);
-    }
 }
