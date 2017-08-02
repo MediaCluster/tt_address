@@ -16,20 +16,20 @@ namespace TYPO3\TtAddress\Controller;
  */
 
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
- 
+
 /**
  * AddressController
  */
 class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
-{ 
+{
 
   /**
    * @var \TYPO3\TtAddress\Domain\Repository\AddressRepository
    * @inject
    */
   protected $addressRepository;
-  
-  
+
+
   /**
    * @param \TYPO3\TtAddress\Domain\Model\Address $address
    * @return void
@@ -55,22 +55,22 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     if ($this->settings['singlePid'] == '') {
       $this->settings['singlePid'] = intval($GLOBALS['TSFE']->id);
     }
-    
+
     // set default sortBy to last_name, or singleSelection if singleRecords are there
     if($this->settings['sortBy'] == 'default' && $this->settings['singleRecords'] == '') {
-      
+
       $this->settings['sortBy'] = 'last_name';
-      
+
     } else if ($this->settings['sortBy'] == 'default' && $this->settings['singleRecords'] != '') {
       $this->settings['sortBy'] = 'singleSelection';
     }
-    
+
     // set a working alternative in case there is no singleRecord and sorting is set to singleSelection
     if($this->settings['singleRecords'] == '' &&
        $this->settings['sortBy'] == 'singleSelection') {
       $this->settings['sortBy'] = 'sorting';
     }
-    
+
     // set the final orderings
     if($this->settings['sortOrder'] == 'ASC') {
       $orderings = array(
@@ -81,20 +81,20 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->settings['sortBy'] => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
       );
     }
-    
+
     // get all the records
     if($this->settings['singleRecords'] != '') {
-      
+
       // get addresses by singleRecords
       $addresses = $this->addressRepository->findByUidListOrderByList($this->settings, $orderings);
-      
+
     } else if ($this->settings['groups'] != '') {
-      
+
       // get addresses by category
       $addresses = $this->addressRepository->findTtAddressesByCategories($this->settings, $orderings);
-      
+
     } else if ($this->settings['pages'] != '') {
-      
+
       // get records from pages
       // first add recursive option
       $storagePageIds = $this->getTreePids();
@@ -102,27 +102,27 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
       $querySettings = $this->addressRepository->createQuery()->getQuerySettings();
       $querySettings->setRespectStoragePage(TRUE);
       $querySettings->setStoragePageIds($storagePageIds);
-      $querySettings->setOrderings($orderings);
+      $this->addressRepository->setDefaultOrderings($orderings);
       $this->addressRepository->setDefaultQuerySettings($querySettings);
       $addresses = $this->addressRepository->findAll();
-      
+
     } else {
-      
+
       // Plugin settings are empty, just retrieve all records without respecting storagePage
       $querySettings = $this->addressRepository->createQuery()->getQuerySettings();
       $querySettings->setRespectStoragePage(FALSE);
-      $querySettings->setOrderings($orderings);
+      $this->addressRepository->setDefaultOrderings($orderings);
       $this->addressRepository->setDefaultQuerySettings($querySettings);
       // no settings, fallback to findAll
       $addresses = $this->addressRepository->findAll();
-      
+
     }
-    
+
     $this->view->assign("settings", $this->settings);
     $this->view->assign("addresses", $addresses);
   }
-  
-  
+
+
   /**
    * Injects the Configuration Manager and is initializing the framework settings
    *
@@ -142,29 +142,29 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     // correct the array to be in same shape like the _SETTINGS array
     $tsSettings = self::removeDots($tsSettings['plugin.']['tx_ttaddress.']);
-    
+
     // get original settings
     // original means: what extbase does by munching flexform and TypoScript together, but leaving empty flexform-settings empty ...
     $originalSettings = $this->configurationManager->getConfiguration(
       \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS
     );
-        
+
     $propertiesNotAllowedViaFlexForms = array('orderByAllowed');
     foreach($propertiesNotAllowedViaFlexForms as $property) {
       $originalSettings[$property] = $tsSettings['settings'][$property];
     }
-    
+
     // start override
     if (isset($tsSettings['settings']['overrideFlexformSettingsIfEmpty'])) {
       /** @var \TYPO3\TtAddress\Utility\TypoScript $typoScriptUtility */
-      $typoScriptUtility = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\TtAddress\\Utility\\TypoScript'); 
+      $typoScriptUtility = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\TtAddress\\Utility\\TypoScript');
       $originalSettings = $typoScriptUtility->override($originalSettings, $tsSettings);
     }
     // Re-set global settings
     $this->settings = $originalSettings;
   }
-  
-  
+
+
   /**
    * Removes dots at the end of a configuration array
    * @param array $settings the array to transformed
@@ -178,8 +178,8 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     }
     return $conf;
   }
-  
-  
+
+
   /**
    * Removes a dot in the end of a String
    * @param string $string
@@ -189,7 +189,7 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
   {
     return preg_replace('/\.$/', '', $string);
   }
-  
+
   /**
    * Retrieves subpages of given pageIds recursively until reached $this->settings['recursive']
    *
@@ -200,10 +200,10 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     $queryGenerator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Database\\QueryGenerator' );
     // make array of root-page ids
     $rootPIDs = explode(",", $this->settings["pages"]);
-    
+
     // build array which will finally hold all accepted storagePages
     $storagePIDsArray = explode(",", $this->settings["pages"]);
-    
+
     // iterate through root-page ids and merge to array
     foreach($rootPIDs as $pid) {
       $subtreePids = explode(",", $queryGenerator->getTreeList($pid, $this->settings["recursive"], 0, 1));
