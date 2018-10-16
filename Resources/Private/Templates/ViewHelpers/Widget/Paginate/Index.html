@@ -25,15 +25,15 @@
       <f:if condition="{pagination.previousPage}">
         <f:if condition="{pagination.previousPage} > 1">
           <f:then>
-            <ttaddress:headerData><link rel="prev" href="{f:widget.uri(arguments: {currentPage: pagination.previousPage}) -> f:format.htmlentities()}" /></ttaddress:headerData>
+            <ttaddress:headerData><link rel="prev" href="{f:widget.uri(arguments: {currentPage: pagination.previousPage}, useCacheHash: true) -> f:format.htmlentities()}" /></ttaddress:headerData>
           </f:then>
           <f:else>
-            <ttaddress:headerData><link rel="prev" href="{f:widget.uri() -> f:format.htmlentities()}" /></ttaddress:headerData>
+            <ttaddress:headerData><link rel="prev" href="{f:widget.uri(useCacheHash: true) -> f:format.htmlentities()}" /></ttaddress:headerData>
           </f:else>
         </f:if>
       </f:if>
       <f:if condition="{pagination.nextPage}">
-        <ttaddress:headerData><link rel="next" href="{f:widget.uri(arguments: {currentPage: pagination.nextPage}) -> f:format.htmlentities()}" /></ttaddress:headerData>
+        <ttaddress:headerData><link rel="next" href="{f:widget.uri(arguments: {currentPage: pagination.nextPage}, useCacheHash: true) -> f:format.htmlentities()}" /></ttaddress:headerData>
       </f:if>
     </f:if>
 
@@ -46,12 +46,12 @@
           <li class="previous">
             <f:if condition="{pagination.previousPage} > 1">
               <f:then>
-                <f:widget.link arguments="{currentPage: pagination.previousPage}">
+                <f:widget.link arguments="{currentPage: pagination.previousPage}" useCacheHash="true">
                   &laquo; <f:translate key="paginate_previous" />
                 </f:widget.link>
               </f:then>
               <f:else>
-                <f:widget.link>
+                <f:widget.link useCacheHash="true">
                   &laquo; <f:translate key="paginate_previous" />
                 </f:widget.link>
               </f:else>
@@ -60,7 +60,7 @@
         </f:if>
         <f:if condition="{pagination.displayRangeStart} > 1">
           <li class="first">
-            <f:widget.link>1</f:widget.link>
+            <f:widget.link useCacheHash="true">1</f:widget.link>
           </li>
         </f:if>
         <f:if condition="{pagination.hasLessPages}">
@@ -75,10 +75,10 @@
               <li>
                 <f:if condition="{page.number} > 1">
                   <f:then>
-                    <f:widget.link arguments="{currentPage: page.number}">{page.number}</f:widget.link>
+                    <f:widget.link arguments="{currentPage: page.number}" useCacheHash="true">{page.number}</f:widget.link>
                   </f:then>
                   <f:else>
-                    <f:widget.link>{page.number}</f:widget.link>
+                    <f:widget.link useCacheHash="true">{page.number}</f:widget.link>
                   </f:else>
                 </f:if>
               </li>
@@ -90,12 +90,12 @@
         </f:if>
         <f:if condition="{pagination.displayRangeEnd} < {pagination.numberOfPages}">
           <li class="last">
-            <f:widget.link arguments="{currentPage: pagination.numberOfPages}">{pagination.numberOfPages}</f:widget.link>
+            <f:widget.link arguments="{currentPage: pagination.numberOfPages}" useCacheHash="true">{pagination.numberOfPages}</f:widget.link>
           </li>
         </f:if>
         <f:if condition="{pagination.nextPage}">
           <li class="last next">
-            <f:widget.link arguments="{currentPage: pagination.nextPage}">
+            <f:widget.link arguments="{currentPage: pagination.nextPage}" useCacheHash="true">
               <f:translate key="paginate_next" /> &raquo;
             </f:widget.link>
           </li>
