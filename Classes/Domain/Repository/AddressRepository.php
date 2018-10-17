@@ -48,7 +48,7 @@ class AddressRepository extends Repository
   {
     if ($settings['groups'] != '') {
       // if at least one category is set, return category based query
-      $ttAddresses = $this->buildQueryCategories($orderings, $settings['groups'], $settings['groupsCombination']);      
+      $ttAddresses = $this->buildQueryCategories($orderings, $settings['groups'], $settings['groupsCombination']);
     } else {
       // fallback find all
       $ttAddresses = $this->findAll();

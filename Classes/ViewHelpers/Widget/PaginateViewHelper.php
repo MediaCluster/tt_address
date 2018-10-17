@@ -59,7 +59,6 @@ class PaginateViewHelper extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetView
         $this->registerArgument('initial', 'array', 'initial data', false, []);
     }
 
-
     /**
      * Render everything
      *

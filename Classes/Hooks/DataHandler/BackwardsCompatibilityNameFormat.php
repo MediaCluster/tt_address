@@ -16,8 +16,6 @@ namespace TYPO3\TtAddress\Hooks\DataHandler;
 
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\TtAddress\Domain\Repository\AddressRepository;
 use TYPO3\TtAddress\Utility\SettingsUtility;
 
 /**
