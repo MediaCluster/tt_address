@@ -34,3 +34,8 @@ You are encouraged to move along to the new extbase/fluid based plugin, in case 
  - Filtering by first character of last name
  - Sorting on frontend
 
+## Current version compatibility
+
+Version 4.0.0 and upwards should still support TYPO3 7.x and TYPO3 8.7.x versions
+Version 4.5.0 is a compatibility version for TYPO3 8.7.x up to TYPO3 9.5.x
+
