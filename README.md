@@ -37,5 +37,8 @@ You are encouraged to move along to the new extbase/fluid based plugin, in case 
 ## Current version compatibility
 
 Version 4.0.0 and upwards should still support TYPO3 7.x and TYPO3 8.7.x versions
+
 Version 4.5.0 is a compatibility version for TYPO3 8.7.x up to TYPO3 9.5.x
+
+**Important**: You can not upgrade directly from tt_address v3 to 4.5.x. You need to upgrade to 4.0.x first and then upgrade to 4.5.x.
 
