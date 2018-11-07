@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2017-04-05T08:11:35Z" product-name="tt_address">
-		<header/>
-		<body>
-			<trans-unit id="pi1_flexform.sheet_selection" xml:space="preserve">
+    <file source-language="en" datatype="plaintext" original="messages" date="2017-04-05T08:11:35Z" product-name="tt_address">
+        <header/>
+        <body>
+            <trans-unit id="pi1_flexform.sheet_selection" xml:space="preserve">
 				<source>Selection</source>
 			</trans-unit>
 			<trans-unit id="pi1_flexform.single_records" xml:space="preserve">
@@ -27,9 +27,9 @@
 			<trans-unit id="pi1_flexform.sortBy.singleSelection" xml:space="preserve">
 				<source>Order of single addresses</source>
 			</trans-unit>
-      <trans-unit id="pi1_flexform.sortBy.sorting" xml:space="preserve" approved="yes">
-        <source>Order of addresses</source>
-      </trans-unit>
+			<trans-unit id="pi1_flexform.sortBy.sorting" xml:space="preserve" approved="yes">
+				<source>Order of addresses</source>
+			</trans-unit>
 			<trans-unit id="pi1_flexform.sortOrder" xml:space="preserve">
 				<source>Sort Order</source>
 			</trans-unit>
@@ -48,27 +48,45 @@
 			<trans-unit id="pi1_flexform.templateFile.I.0" xml:space="preserve">
 				<source>Default</source>
 			</trans-unit>
-      <trans-unit id="pi1_flexform.displayMode" xml:space="preserve">
-        <source>Select display mode</source>
-      </trans-unit>
-      <trans-unit id="pi1_flexform.displayMode.listView" xml:space="preserve">
-        <source>List view</source>
-      </trans-unit>
-      <trans-unit id="pi1_flexform.displayMode.singleView" xml:space="preserve">
-        <source>Single view</source>
-      </trans-unit>
-      <trans-unit id="pi1_flexform.displayMode.mapView" xml:space="preserve">
-        <source>Map view (not functional ATM!)</source>
-      </trans-unit>
-      <trans-unit id="pi1_flexform.hidePagination" xml:space="preserve">
-        <source>Do not display pagebrowser (listview)</source>
-      </trans-unit>
-      <trans-unit id="pi1_flexform.itemsPerPage" xml:space="preserve">
-        <source>Number of items to be displayed (listview)</source>
-      </trans-unit>
-      <trans-unit id="pi1_flexform.singlePid" xml:space="preserve">
-        <source>Page for singelview (listview, this page if empty)</source>
-      </trans-unit>
-		</body>
-	</file>
+			<trans-unit id="pi1_flexform.displayMode" xml:space="preserve">
+				<source>Select display mode</source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.displayMode.listView" xml:space="preserve">
+				<source>List view</source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.displayMode.singleView" xml:space="preserve">
+				<source>Single view</source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.displayMode.mapView" xml:space="preserve">
+				<source>Map view (not functional ATM!)</source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.hidePagination" xml:space="preserve">
+				<source>Do not display pagebrowser (listview)</source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.itemsPerPage" xml:space="preserve">
+				<source>Number of items to be displayed (listview)</source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.singlePid" xml:space="preserve">
+				<source>Page for singelview (listview, this page if empty)</source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.columns" xml:space="preserve">
+				<source>Number of columns</source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.columns.one" xml:space="preserve">
+				<source>1</source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.columns.two" xml:space="preserve">
+				<source>2</source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.columns.three" xml:space="preserve">
+				<source>3</source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.columns.four" xml:space="preserve">
+				<source>4</source>
+			</trans-unit>
+			<trans-unit id="pi1_flexform.columns.six" xml:space="preserve">
+				<source>6</source>
+			</trans-unit>
+        </body>
+    </file>
 </xliff>
